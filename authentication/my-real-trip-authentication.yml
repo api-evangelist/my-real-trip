@@ -1,0 +1,37 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.myrealtrip.com/#auth
+docs: https://docs.myrealtrip.com/#auth
+summary:
+  types: [http]
+  http_schemes: [bearer]
+  api_key_in: [header]
+  oauth2_flows: []
+  notes: >-
+    The MyRealTrip Partner API uses a static API key presented as an HTTP
+    Bearer token. There is no OAuth2/OIDC surface and no scope model. Keys are
+    issued from the Partner page (Open API menu, "API Key 발급") and are shown
+    only once at creation; re-issuing a key immediately expires the previous
+    one. Keys must be used server-side only.
+schemes:
+  - name: bearerApiKey
+    type: http
+    scheme: bearer
+    in: header
+    header: Authorization
+    format: 'Bearer YOUR_API_KEY'
+    sources: [https://docs.myrealtrip.com/#auth]
+    description: >-
+      API key sent in the Authorization header using the Bearer scheme. Test
+      keys are prefixed test_sk_ (per docs example). Missing header or a
+      missing "Bearer " prefix returns 401; a valid key without resource
+      permission returns 403.
+key_management:
+  issuance: Partner page -> Open API -> "API Key 발급"
+  visibility: full value shown only at creation, masked thereafter
+  rotation: re-issue creates a new key and auto-expires the previous key
+  transport: HTTPS only, TLS 1.2+
+  support: marketing_partner@myrealtrip.com
+transport_security:
+  https_required: true
+  min_tls: '1.2'

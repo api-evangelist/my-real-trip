@@ -1,0 +1,24 @@
+generated: '2026-07-20'
+method: generated
+source: https://docs.myrealtrip.com/
+note: >-
+  Grounded in the published MyRealTrip Partner API reference (real endpoints,
+  verbatim from docs.myrealtrip.com). The provider ships no OpenAPI, so
+  operations are identified by HTTP method + path.
+skills:
+  - file: my-real-trip-generate-marketing-link.md
+    name: Generate a MyRealTrip marketing link
+    api: https://docs.myrealtrip.com/
+    operations:
+      - POST /v1/products/tna/search
+      - POST /v1/products/accommodation/search
+      - POST /v1/products/flight/fare-query-landing-url
+      - POST /v1/mylink
+  - file: my-real-trip-partner-reporting.md
+    name: Pull MyRealTrip partner revenue and reservations
+    api: https://docs.myrealtrip.com/
+    operations:
+      - GET /v1/revenues
+      - GET /v1/revenues/flight
+      - GET /v1/reservations
+      - GET /v1/reservations/flight

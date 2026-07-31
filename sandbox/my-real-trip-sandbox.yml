@@ -1,0 +1,26 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.myrealtrip.com/
+docs: https://docs.myrealtrip.com/
+interactive_console:
+  present: true
+  form: '"Try it" tab on each API reference page generates runnable code from your parameters'
+  location: https://docs.myrealtrip.com/
+key_modes:
+  test_key_prefix: test_sk_
+  note: >-
+    Docs auth examples use a Bearer key prefixed test_sk_ (e.g.
+    "Authorization: Bearer test_sk_aBcDeFgHiJkLmNoPqRsTuVwXyZ1234567890"),
+    indicating a test/live key separation by prefix. Live-key prefix is not
+    published. There is no separate sandbox base URL — all requests go to
+    https://partner-ext-api.myrealtrip.com.
+smoke_test:
+  endpoint: GET /health
+  expect: '{ status: "UP" }'
+  note: Confirms connectivity before authenticated calls; issue an API key first.
+test_values: []
+notes: >-
+  MyRealTrip publishes no dedicated sandbox environment, test cards, or magic
+  test identifiers. Testing is done against production endpoints with a
+  test-prefixed API key and the docs "Try it" console. No test values are
+  invented here.

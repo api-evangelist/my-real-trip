@@ -1,0 +1,69 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.myrealtrip.com/#error
+docs: https://docs.myrealtrip.com/#error
+format: custom-envelope
+envelope:
+  field: result
+  shape: '{ result: { status: <httpStatus>, message: <string>, code: <STRING_CODE> } }'
+  note: >-
+    Errors are not RFC 9457 application/problem+json. Every response carries a
+    top-level result object with status (HTTP code), message, and code. Success
+    responses use code "success"; error responses use an uppercase code.
+retry_strategy:
+  retryable_status: [429, 500, 503]
+  non_retryable_status: [400, 401, 403, 404]
+  recommendation: exponential backoff, max 3 retries (1s, 2s, 4s)
+errors:
+  - status: 400
+    code: BAD_REQUEST
+    title: Bad Request
+    cause: >-
+      Missing required parameters (e.g. startDate/endDate), wrong parameter
+      format (dates not yyyy-MM-dd), or invalid values (startDate after endDate).
+    remediation: >-
+      Check each API's parameter docs; use yyyy-MM-dd dates; include all
+      required parameters.
+  - status: 401
+    code: UNAUTHORIZED
+    title: Unauthorized
+    cause: >-
+      Authorization header missing, Bearer prefix missing, expired/re-issued
+      key used, or key contains whitespace/newlines.
+    remediation: >-
+      Use "Authorization: Bearer YOUR_API_KEY"; verify the active key on the
+      Partner page; re-issue if needed.
+  - status: 403
+    code: FORBIDDEN
+    title: Forbidden
+    cause: >-
+      Valid key but no permission for the requested resource, or partner API
+      access disabled.
+    remediation: >-
+      Check API access on the Partner page; request access via
+      marketing_partner@myrealtrip.com.
+  - status: 404
+    code: NOT_FOUND
+    title: Not Found
+    cause: Endpoint URL typo, non-existent API version, or wrong Base URL.
+    remediation: >-
+      Confirm Base URL https://partner-ext-api.myrealtrip.com and compare the
+      endpoint path against the docs.
+  - status: 429
+    code: TOO_MANY_REQUESTS
+    title: Too Many Requests
+    cause: Per-minute rate limit exceeded / burst of calls.
+    remediation: >-
+      Space requests (>=1s); monitor X-RateLimit-Remaining; back off and retry;
+      request a higher limit via marketing_partner@myrealtrip.com.
+  - status: 500
+    code: INTERNAL_SERVER_ERROR
+    title: Internal Server Error
+    cause: Transient server-side error.
+    remediation: Retry after a short wait; if persistent, report request time + error body.
+  - status: 503
+    code: SERVICE_UNAVAILABLE
+    title: Service Unavailable
+    cause: Maintenance or temporary overload.
+    remediation: Retry after a few minutes; contact support if it persists >30 min.
+support: marketing_partner@myrealtrip.com

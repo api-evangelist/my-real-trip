@@ -1,0 +1,59 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.myrealtrip.com/#header
+docs: https://docs.myrealtrip.com/
+authentication:
+  style: bearer-api-key
+  header: Authorization
+  see: authentication/my-real-trip-authentication.yml
+idempotency:
+  supported: false
+  note: >-
+    The Partner API documents no idempotency key. Read endpoints (revenues,
+    reservations, product search) are naturally idempotent; the only write-like
+    operation (POST /v1/mylink) creates a short link and documents no
+    idempotency contract. No Idempotency-Key header is defined.
+pagination:
+  styles:
+    - name: page-based (reservations, accommodation, flight airports)
+      params: [page, pageSize]
+      zero_based: true
+      response_fields: [page, size, totalCount]
+      note: accommodation/flight use 0-based page and response field "size"
+    - name: page-based (tour/ticket search)
+      params: [page, size]
+      one_based: true
+      response_fields: [page, perPage, hasNextPage, totalCount]
+      note: >-
+        TNA search is 1-based and returns perPage (not size) — inconsistent
+        with accommodation/flight paging.
+  envelope: 'meta.pagination { page, pageSize, totalCount } or meta.totalCount'
+request_tracing:
+  header: X-Request-ID
+  format: UUID or unique string (max 128 chars)
+  echoed: true
+  note: server generates one if not provided; returned on the response
+localization:
+  header: Accept-Language
+  supported: [ko-KR, en-US]
+  default: ko-KR
+content_negotiation:
+  request: application/json (Content-Type required on POST/PUT)
+  response: application/json
+  accept_default: application/json
+user_agent:
+  recommended_format: 'MyApp/1.0.0 (contact@example.com)'
+versioning:
+  scheme: uri-path
+  current: v1
+  see: lifecycle/my-real-trip-lifecycle.yml
+rate_limit_signaling:
+  headers: [X-RateLimit-Limit, X-RateLimit-Remaining]
+  over_limit_status: 429
+  see: rate-limits/my-real-trip-rate-limits.yml
+error_envelope:
+  shape: '{ data, meta, result: { status, message, code } }'
+  see: errors/my-real-trip-error-codes.yml
+transport:
+  https_only: true
+  min_tls: '1.2'

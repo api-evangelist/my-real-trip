@@ -1,0 +1,36 @@
+generated: '2026-07-20'
+method: derived
+source: https://docs.myrealtrip.com/
+note: >-
+  Derived from the published MyRealTrip Partner API docs. Asserts cross-cutting
+  conventions only; MyRealTrip publishes no formal compliance certifications
+  (SOC 2 / ISO 27001 / PCI), so no Compliance pointer is emitted.
+standards:
+  - id: oauth2
+    conforms: false
+    evidence: Auth is a static API key over HTTP Bearer; no OAuth2 flows.
+  - id: oidc
+    conforms: false
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: >-
+      Errors use a custom envelope (result{status,message,code}), not
+      application/problem+json.
+  - id: rfc6750-bearer-token
+    conforms: true
+    evidence: 'API key transmitted as Authorization: Bearer <key>.'
+  - id: tls-1.2-plus
+    conforms: true
+    evidence: Docs mandate HTTPS-only and TLS 1.2+; SSL/TLS 1.1 unsupported.
+  - id: rate-limit-headers
+    conforms: true
+    evidence: X-RateLimit-Limit / X-RateLimit-Remaining response headers; 429 on excess.
+  - id: pagination
+    conforms: true
+    evidence: page/pageSize (and page/size) parameters with meta.pagination.
+  - id: mcp
+    conforms: true
+    evidence: Official Model Context Protocol server at mcp-servers.myrealtrip.com/mcp (11 tools).
+  - id: idempotency
+    conforms: false
+    evidence: No idempotency-key contract documented.

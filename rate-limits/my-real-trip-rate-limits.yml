@@ -1,0 +1,55 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.myrealtrip.com/
+docs: https://docs.myrealtrip.com/#security
+window: per-minute
+over_limit_status: 429
+signal_headers: [X-RateLimit-Limit, X-RateLimit-Remaining]
+note: >-
+  Rate limits are enforced per-API per-minute; each API's docs page shows a
+  Rate Limit badge. Exceeding a limit returns HTTP 429 (TOO_MANY_REQUESTS).
+  Monitor X-RateLimit-Remaining. Limits below are as published on the API
+  reference pages.
+limits:
+  - endpoint: POST /v1/products/flight/fare-query-landing-url
+    limit_count: 1000
+    window: minute
+  - endpoint: POST /v1/products/flight/airport-autocomplete
+    limit_count: 1000
+    window: minute
+  - endpoint: POST /v1/products/flight/airports
+    limit_count: 1000
+    window: minute
+  - endpoint: POST /v1/products/flight/calendar
+    limit_count: 1000
+    window: minute
+  - endpoint: POST /v1/products/flight/calendar/window
+    limit_count: 1000
+    window: minute
+  - endpoint: POST /v1/products/flight/calendar/lowest
+    limit_count: 1000
+    window: minute
+  - endpoint: POST /v1/products/flight/calendar/bulk-lowest
+    limit_count: 1000
+    window: minute
+  - endpoint: POST /v1/products/accommodation/region-autocomplete
+    limit_count: 1000
+    window: minute
+  - endpoint: POST /v1/products/accommodation/search
+    limit_count: 50
+    window: minute
+  - endpoint: POST /v1/products/tna/categories
+    limit_count: 200
+    window: minute
+  - endpoint: POST /v1/products/tna/search
+    limit_count: 200
+    window: minute
+  - endpoint: POST /v1/products/tna/detail
+    limit_count: 200
+    window: minute
+  - endpoint: POST /v1/products/tna/options
+    limit_count: 50
+    window: minute
+  - endpoint: POST /v1/products/tna/calendars
+    limit_count: 100
+    window: minute

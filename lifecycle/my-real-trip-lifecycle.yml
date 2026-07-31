@@ -1,0 +1,23 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.myrealtrip.com/
+versioning:
+  scheme: uri-path
+  current: v1
+  docs: https://docs.myrealtrip.com/
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No formal deprecation/sunset policy is published.
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+health_check:
+  endpoint: GET /health
+  base_url: https://partner-ext-api.myrealtrip.com
+  response: '{ status: "UP" }'
+data_freshness:
+  reservations: real-time
+  revenues: daily settlement completed ~06:00 KST (prior-day data)
+deprecated_operations: []

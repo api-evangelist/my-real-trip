@@ -1,0 +1,27 @@
+generated: '2026-07-20'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.myrealtrip.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 30 23:59:59 2026 GMT
+  hsts: false
+- host: docs.myrealtrip.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 30 11:24:20 2026 GMT
+  hsts: false
+- host: partner-ext-api.myrealtrip.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 30 23:59:59 2026 GMT
+  hsts: null
+domains:
+- domain: myrealtrip.com
+  dnssec: false
+  caa:
+  - ;; connection timed out; no servers could be reached
+  spf: true
+  dmarc: true
+  dmarc_policy: none

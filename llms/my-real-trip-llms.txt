@@ -1,0 +1,17 @@
+> # MyRealTrip Partner API — 문서 인덱스
+> 전체 문서: https://docs.myrealtrip.com/llms-full.txt
+
+- [시작하기](https://docs.myrealtrip.com#gettingstarted)
+- [수익 산정 기준](https://docs.myrealtrip.com#revenue)
+- [트래킹 기준](https://docs.myrealtrip.com#tracking)
+- [정산 기준](https://docs.myrealtrip.com#settlement)
+- [인증 및 헤더](https://docs.myrealtrip.com#auth)
+- [기타 헤더](https://docs.myrealtrip.com#header)
+- [API 키](https://docs.myrealtrip.com#apikey)
+- [에러 코드](https://docs.myrealtrip.com#error)
+- [보안](https://docs.myrealtrip.com#security)
+- [마이 링크](https://docs.myrealtrip.com#mylink)
+- [MCP 개요](https://docs.myrealtrip.com#mcp)
+- [문의 및 지원](https://docs.myrealtrip.com#contact)
+
+전체 문서(llms-full.txt): https://docs.myrealtrip.com/llms-full.txt

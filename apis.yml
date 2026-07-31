@@ -1,8 +1,15 @@
 aid: my-real-trip
 name: My Real Trip
-description: 'My Real Trip is a company surfaced as a portfolio company of partech and added to the API
-  Evangelist network as a stub for enrichment. Sector: Consumer. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: >-
+  My Real Trip (마이리얼트립) is South Korea's largest online travel platform,
+  founded in 2012, selling flights, stays, tours, tickets, and activities across
+  680+ cities in 80+ countries to roughly 5 million monthly active users. For
+  developers it publishes a Partner API (partner-ext-api.myrealtrip.com) that
+  lets marketing/affiliate partners search products, generate trackable MyLink
+  short links, and pull revenue and reservation reports, secured with a Bearer
+  API key. It also operates an official public Model Context Protocol (MCP)
+  server that exposes real-time flight, stay, and tour/activity search to AI
+  assistants such as Claude, Cursor, and Gemini CLI.
 url: https://raw.githubusercontent.com/api-evangelist/my-real-trip/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -10,13 +17,61 @@ x-backed-by:
 - partech
 x-tier: stub
 x-tier-reason: portfolio-lead
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 12
+  pass: local-v1
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
+image: https://dffoxz5he03rp.cloudfront.net/logos/mrt_main_og_image.png
 tags:
 - Company
 - Consumer
-apis: []
+- Travel
+- Tourism
+- Flights
+- Accommodation
+- Tours and Activities
+- Affiliate
+- MCP
+- South Korea
+apis:
+- name: MyRealTrip Partner API
+  description: >-
+    Marketing-partner REST API for MyRealTrip. Search flights (domestic and
+    international, lowest-fare calendars), accommodations, and tours/tickets;
+    generate trackable MyLink short URLs; and retrieve revenue and reservation
+    reports for affiliate reconciliation. Authenticated with a Bearer API key,
+    JSON over HTTPS, per-minute rate limits.
+  humanURL: https://docs.myrealtrip.com/
+  baseURL: https://partner-ext-api.myrealtrip.com
+  tags:
+  - Travel
+  - Flights
+  - Accommodation
+  - Tours and Activities
+  - Affiliate
+  properties:
+  - type: Documentation
+    url: https://docs.myrealtrip.com/
+  - type: Authentication
+    url: authentication/my-real-trip-authentication.yml
+  - type: RateLimits
+    url: rate-limits/my-real-trip-rate-limits.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -25,3 +80,41 @@ maintainers:
 common:
 - type: Website
   url: https://www.myrealtrip.com/
+- type: DeveloperPortal
+  url: https://docs.myrealtrip.com/
+- type: Documentation
+  url: https://docs.myrealtrip.com/
+- type: GettingStarted
+  url: https://docs.myrealtrip.com/#gettingstarted
+- type: Support
+  url: https://support.myrealtrip.com/inquiry
+- type: GitHubOrganization
+  url: https://github.com/myrealtrip
+- type: TermsOfService
+  url: https://auth.myrealtrip.com/terms/policyAgreement
+- type: PrivacyPolicy
+  url: https://auth.myrealtrip.com/terms/common/privacy
+- type: SignUp
+  url: https://partner.myrealtrip.com/welcome
+- type: LLMsTxt
+  url: llms/my-real-trip-llms.txt
+- type: MCPServer
+  url: mcp/my-real-trip-mcp.yml
+- type: Authentication
+  url: authentication/my-real-trip-authentication.yml
+- type: Conventions
+  url: conventions/my-real-trip-conventions.yml
+- type: ErrorCatalog
+  url: errors/my-real-trip-error-codes.yml
+- type: RateLimits
+  url: rate-limits/my-real-trip-rate-limits.yml
+- type: Lifecycle
+  url: lifecycle/my-real-trip-lifecycle.yml
+- type: Sandbox
+  url: sandbox/my-real-trip-sandbox.yml
+- type: Conformance
+  url: conformance/my-real-trip-conformance.yml
+- type: DomainSecurity
+  url: security/my-real-trip-domain-security.yml
+- type: AgentSkill
+  url: skills/_index.yml
