@@ -7,60 +7,62 @@ server:
   name: myrealtrip
   transport: http
   url: https://mcp-servers.myrealtrip.com/mcp
-  description: >-
-    Official MyRealTrip (마이리얼트립) MCP server. Exposes real-time flight, stay,
-    and tour/activity search over the Model Context Protocol for AI clients
-    (Claude Desktop/Code, Cursor, Codex CLI, Gemini CLI, Windsurf, Cline).
-    Verified live via tools/list on 2026-07-20 (11 tools, all read-only).
+  description: Official MyRealTrip (마이리얼트립) MCP server. Exposes real-time flight, stay, and tour/activity
+    search over the Model Context Protocol for AI clients (Claude Desktop/Code, Cursor, Codex CLI, Gemini
+    CLI, Windsurf, Cline). Verified live via tools/list on 2026-07-20 (11 tools, all read-only).
   auth: none
 tools:
-  - name: getCurrentTime
-    description: Get current Korea Standard Time (KST) with both formatted and ISO date.
-    read_only: true
-  - name: searchStays
-    description: >-
-      Search accommodations (hotels, pensions, resorts) on MyRealTrip with
-      price/sorting/amenity filters. Returns listing summaries only.
-    read_only: true
-  - name: getStayDetail
-    description: >-
-      Get accommodation details: room types, per-room pricing, cancellation
-      policies, amenities, and reviews (requires gid from searchStays).
-    read_only: true
-  - name: getCategoryList
-    description: Get available TNA (tour/activity) categories for a city; call before searchTnas.
-    read_only: true
-  - name: searchTnas
-    description: Search tours, tickets, and activities with optional category filtering.
-    read_only: true
-  - name: getTnaDetail
-    description: Get tour/activity details (itinerary, inclusions/exclusions, cancellation policy).
-    read_only: true
-  - name: getTnaOptions
-    description: Check availability and pricing for a tour/activity on a specific date.
-    read_only: true
-  - name: searchInternationalFlights
-    description: Search international flights (Korea to overseas) with real-time pricing.
-    read_only: true
-  - name: searchDomesticFlights
-    description: Search domestic Korea flights (all direct) with real-time pricing.
-    read_only: true
-  - name: getPromotionAirlines
-    description: Get airlines with active fare promotions (특가/할인).
-    read_only: true
-  - name: flightsFareCalendar
-    description: Lowest-fare calendar showing cheapest prices by date for a route (up to 180 days).
-    read_only: true
+- name: getCurrentTime
+  description: Get current Korea Standard Time (KST) with both formatted and ISO date.
+  read_only: true
+- name: searchStays
+  description: Search accommodations (hotels, pensions, resorts) on MyRealTrip with price/sorting/amenity
+    filters. Returns listing summaries only.
+  read_only: true
+- name: getStayDetail
+  description: 'Get accommodation details: room types, per-room pricing, cancellation policies, amenities,
+    and reviews (requires gid from searchStays).'
+  read_only: true
+- name: getCategoryList
+  description: Get available TNA (tour/activity) categories for a city; call before searchTnas.
+  read_only: true
+- name: searchTnas
+  description: Search tours, tickets, and activities with optional category filtering.
+  read_only: true
+- name: getTnaDetail
+  description: Get tour/activity details (itinerary, inclusions/exclusions, cancellation policy).
+  read_only: true
+- name: getTnaOptions
+  description: Check availability and pricing for a tour/activity on a specific date.
+  read_only: true
+- name: searchInternationalFlights
+  description: Search international flights (Korea to overseas) with real-time pricing.
+  read_only: true
+- name: searchDomesticFlights
+  description: Search domestic Korea flights (all direct) with real-time pricing.
+  read_only: true
+- name: getPromotionAirlines
+  description: Get airlines with active fare promotions (특가/할인).
+  read_only: true
+- name: flightsFareCalendar
+  description: Lowest-fare calendar showing cheapest prices by date for a route (up to 180 days).
+  read_only: true
 clients:
-  - Claude Desktop
-  - Claude Code
-  - Cursor
-  - Codex CLI
-  - Gemini CLI
-  - Windsurf
-  - Cline
-notes: >-
-  This MCP server is distinct from the authenticated Partner REST API
-  (partner-ext-api.myrealtrip.com). The MCP server is unauthenticated,
-  read-only product search intended for AI assistants; the Partner API is a
-  Bearer-API-key marketing-partner reporting + link-generation surface.
+- Claude Desktop
+- Claude Code
+- Cursor
+- Codex CLI
+- Gemini CLI
+- Windsurf
+- Cline
+notes: This MCP server is distinct from the authenticated Partner REST API (partner-ext-api.myrealtrip.com).
+  The MCP server is unauthenticated, read-only product search intended for AI assistants; the Partner
+  API is a Bearer-API-key marketing-partner reporting + link-generation surface.
+deployment:
+  mode: remote
+  endpoint: https://mcp-servers.myrealtrip.com/mcp
+  verified: probed
+  probe: live
+  tools: 11
+  checked: '2026-08-12'
+  source: catalog MCP census
