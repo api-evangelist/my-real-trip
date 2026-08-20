@@ -46,6 +46,17 @@ tags:
 - Flights
 - Accommodation
 - Tours and Activities
+- Affiliates
+- MCP
+- South Korea
+tags_raw:
+- Company
+- Consumer
+- Travel
+- Tourism
+- Flights
+- Accommodation
+- Tours and Activities
 - Affiliate
 - MCP
 - South Korea
@@ -60,6 +71,12 @@ apis:
   humanURL: https://docs.myrealtrip.com/
   baseURL: https://partner-ext-api.myrealtrip.com
   tags:
+  - Travel
+  - Flights
+  - Accommodation
+  - Tours and Activities
+  - Affiliates
+  tags_raw:
   - Travel
   - Flights
   - Accommodation
