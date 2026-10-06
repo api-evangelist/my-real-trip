@@ -50,7 +50,7 @@ accessModel:
   method: derived
 specificationVersion: '0.23'
 created: '2026-07-17'
-modified: '2026-07-20'
+modified: '2026-10-06'
 image: https://dffoxz5he03rp.cloudfront.net/logos/mrt_main_og_image.png
 tags:
 - Company
@@ -109,6 +109,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- url: https://blog.myrealtrip.com/rss/
+  type: BlogRSS
 - type: Website
   url: https://www.myrealtrip.com/
 - type: DeveloperPortal
