@@ -16,36 +16,65 @@ tools:
   description: Get current Korea Standard Time (KST) with both formatted and ISO date.
   read_only: true
 - name: searchStays
-  description: Search accommodations (hotels, pensions, resorts) on MyRealTrip with price/sorting/amenity
-    filters. Returns listing summaries only.
+  description: 'Search accommodations (hotels, pensions, resorts, etc.) on MyRealTrip(마이리얼트립). Keywords:
+    숙소, 호텔, 펜션, 리조트, hotel, accommodation, stay, lodging. Supports filters for price, sorting, and amenities.
+    ⚠️ Returns only listing summaries (name, price range, rating). Does NOT include room types, per-room
+    pricing, amenities, or reviews. When user asks about specific hotel details, room types (룸 타입/객실),
+    room prices (객실 가격), facilities, or uses keywords like ''자세히/상세/detail'', you MUST follow up with
+    getStayDetail using the gid from these results.'
   read_only: true
 - name: getStayDetail
-  description: 'Get accommodation details: room types, per-room pricing, cancellation policies, amenities,
-    and reviews (requires gid from searchStays).'
+  description: Get accommodation details including room types, per-room pricing, cancellation policies,
+    amenities, and reviews. MUST be called after searchStays when user asks about a specific hotel, room
+    types (룸 타입/객실/방 종류), room prices (객실 가격/방 가격), facilities (시설/편의시설), reviews (리뷰/후기), or wants detailed
+    info (자세히/상세/알아봐줘). Requires gid from searchStays results. For queries mentioning a specific hotel
+    name, call searchStays first to get the gid, then call this tool immediately.
   read_only: true
 - name: getCategoryList
-  description: Get available TNA (tour/activity) categories for a city; call before searchTnas.
+  description: 'Get available TNA (tour/activity) categories for a city. Required workflow: Call this
+    before searchTnas to identify valid category values for filtering.'
   read_only: true
 - name: searchTnas
-  description: Search tours, tickets, and activities with optional category filtering.
+  description: Search tours, tickets, and activities with optional category filtering. Use Korean keywords
+    for best results. Returned prices are starting prices; use getTnaOptions for date-specific pricing.
   read_only: true
 - name: getTnaDetail
-  description: Get tour/activity details (itinerary, inclusions/exclusions, cancellation policy).
+  description: Get tour/activity details including itinerary, inclusions/exclusions, and cancellation
+    policy. Use gid and url from searchTnas results. For date-specific pricing and availability, use getTnaOptions.
   read_only: true
 - name: getTnaOptions
-  description: Check availability and pricing for a tour/activity on a specific date.
+  description: 'Check availability and pricing for a specific date. Required: Use this to verify booking
+    availability before proceeding with reservation.'
   read_only: true
 - name: searchInternationalFlights
-  description: Search international flights (Korea to overseas) with real-time pricing.
+  description: 'Search international flights (Korea to overseas). Use when destination is outside Korea.
+    Common destinations: Tokyo(NRT/HND), Osaka(KIX), Bangkok(BKK), Bali(DPS), Singapore(SIN), Rome(FCO),
+    Paris(CDG), London(LHR), New York(JFK), Hanoi(HAN), Danang(DAD), Cebu(CEB). ⚠️ Any city NOT in Korea
+    = international flight. Required params: origin (IATA 3-letter, e.g. ICN), destination (IATA 3-letter,
+    e.g. NRT), departDate (YYYY-MM-DD). If user doesn''t specify airport, default origin to ICN for international
+    flights. For round-trip: set tripType=ROUND_TRIP. returnDate defaults to departDate+4 if omitted.
+    Results include real-time pricing and reservationUrl — always show both to users.'
   read_only: true
 - name: searchDomesticFlights
-  description: Search domestic Korea flights (all direct) with real-time pricing.
+  description: 'Search domestic Korea flights. Use ONLY when BOTH origin and destination are Korean cities
+    (e.g. 제주, 부산, 김포, 대구, 광주, 여수). ⚠️ Do NOT use for overseas destinations (로마, 발리, 도쿄, 파리, 방콕 etc.) —
+    use searchInternationalFlights instead. Airport codes: GMP(김포), CJU(제주), PUS(부산/김해), TAE(대구), KWJ(광주),
+    RSU(여수), USN(울산), WJU(원주). Required params: origin (e.g. GMP), destination (e.g. CJU), departDate
+    (YYYY-MM-DD). Default origin to GMP for domestic flights if not specified. All domestic routes are
+    direct (no layovers). Results include real-time pricing and reservationUrl — always show both to users.'
   read_only: true
 - name: getPromotionAirlines
-  description: Get airlines with active fare promotions (특가/할인).
+  description: Get airlines with active fare promotions. Call this when user asks about cheap/discounted
+    flights, 특가, 할인, or lowest prices. Returns airline codes, routes, periods, and event names. Pass returned
+    airline code to preferredAirline param in searchInternationalFlights or searchDomesticFlights to filter
+    by that airline.
   read_only: true
 - name: flightsFareCalendar
-  description: Lowest-fare calendar showing cheapest prices by date for a route (up to 180 days).
+  description: 'Get lowest fare calendar showing cheapest prices by date for a route. Use when user wants
+    to compare prices across dates, find 최저가, or explore flexible travel dates. Required params: from
+    (origin IATA, e.g. ICN), to (destination IATA, e.g. NRT), departureDate (YYYY-MM-DD). Covers up to
+    180 days from departureDate. Important: Calendar prices are pre-cached estimates, NOT real-time. Inform
+    users that actual prices may differ — use search tools for real-time pricing.'
   read_only: true
 clients:
 - Claude Desktop
@@ -91,3 +120,4 @@ tool_quality:
   scored: false
   note: Facts from the saved tools/list capture (mcp_tool_quality.py); recorded, not scored. Checks learned
     from Glimind's agent-readiness audit.
+tools_count: 11
