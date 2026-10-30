@@ -64,6 +64,105 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-My Real Trip is a company surfaced as a portfolio company of partech and added to the API Evangelist network as a stub for enrichment. Sector: Consumer. This profile is a lead awaiting the enrichment pipeline.
+My Real Trip (마이리얼트립) is South Korea's largest online travel platform, founded in 2012, selling flights, stays, tours, tickets, and activities across 680+ cities in 80+ countries to roughly 5 million monthly active users. For developers it publishes a Partner API (partner-ext-api.myrealtrip.com) that lets marketing/affiliate partners search products, generate trackable MyLink short links, and pull revenue and reservation reports, secured with a Bearer API key. It also operates an official public Model Context Protocol (MCP) server that exposes real-time flight, stay, and tour/activity search to AI assistants such as Claude, Cursor, and Gemini CLI.
 
-Backed by: partech — https://www.myrealtrip.com/
+**Areas:** Company · Consumer · Travel · Tourism · Flights · Accommodation · Tours and Activities · Affiliates · MCP · South Korea
+
+## My Real Trip on APIs.io
+
+Everything profiled for My Real Trip is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/my-real-trip/](https://apis.io/providers/my-real-trip/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [MyRealTrip Partner API](https://apis.io/apis/my-real-trip/myrealtrip-partner-api/) — Marketing-partner REST API for MyRealTrip. Search flights (domestic and international, lowest-fare calendars), accommodations, and tours/tickets; generate…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [myrealtrip](https://apis.io/servers/my-real-trip/myrealtrip/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [My Real Trip Authentication](https://apis.io/security/my-real-trip/my-real-trip-authentication/)
+- [My Real Trip Domain Security](https://apis.io/security/my-real-trip/my-real-trip-domain-security/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [My Real Trip Rate Limits](https://apis.io/rate-limits/my-real-trip/my-real-trip-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.myrealtrip.com/)
+- [Documentation](https://docs.myrealtrip.com/)
+- [Getting started](https://docs.myrealtrip.com/#gettingstarted)
+- [Sign up](https://partner.myrealtrip.com/welcome)
+- [Support](https://support.myrealtrip.com/inquiry)
+- [Terms of service](https://auth.myrealtrip.com/terms/policyAgreement)
+- [Privacy policy](https://auth.myrealtrip.com/terms/common/privacy)
+- [GitHub](https://github.com/myrealtrip)
+
+## API Evangelist rating
+
+**Kin Score 27.3** — thin · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 0.0 |
+| Contract governance | 4.5 |
+| Operational transparency | 34.2 |
+| Developer ergonomics | 45.8 |
+| Access clarity | 21.1 |
+
+**Agent readiness 17.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 24.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/my-real-trip/](https://apis.io/providers/my-real-trip/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for My Real Trip: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/my-real-trip/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
